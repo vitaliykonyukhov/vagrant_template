@@ -1,5 +1,4 @@
 ---
-## This file should be copied to "vagrant.yml" and be customized for this specific machine
 nodes: 
   - name: node-1
     vm_box: "bento/ubuntu-20.04"
@@ -18,7 +17,7 @@ nodes:
   #     - "../test3.yaml"
   #   ansible_raw_arguments: "--vault-password-file=../Ansible/vaults/vault-pass.sh"
 
-## Common Ansible playbooks loacation
+## Common Ansible playbooks loacations
 ansible_playbook_common: []
   # - "../test3.yaml"
   # - "../test4.yaml"
