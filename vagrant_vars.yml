@@ -1,0 +1,30 @@
+---
+## This file should be copied to "vagrant.yml" and be customized for this specific machine
+nodes: 
+  - name: node-1
+    vm_box: "bento/ubuntu-20.04"
+    cpu: 1
+    memory: 512
+    disk: "5GB"
+    ip: "192.168.79.2"
+    netmask: "255.255.255.0"
+    ansible_playbook: []
+      # - "../test1.yaml"
+      # - "../test3.yaml"
+    # ansible_raw_arguments: "--vault-password-file=../Ansible/vaults/vault-pass.sh"
+  - name: node-2
+    vm_box: "bento/ubuntu-22.04"
+    cpu: 1
+    memory: 512
+    ip: "192.168.79.3"
+    netmask: "255.255.255.0"
+    ansible_playbook: 
+      - "../test2.yaml"
+
+## Common Ansible playbooks loacation
+ansible_playbook_common: 
+  - "../test3.yaml"
+  - "../test4.yaml"
+
+## Common Ansible row arguments
+# ansible_raw_arguments: "--vault-password-file=../Ansible/vaults/vault-pass.sh"
