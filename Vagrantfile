@@ -32,8 +32,10 @@ nb_nodes.each do |node_nb|
       if !node_nb["ip"].nil? && !node_nb["netmask"].nil?
         machine.vm.network "private_network", ip: "#{node_nb["ip"]}", netmask: "#{node_nb["netmask"]}"
       end
-      if !node_nb["disk"].nil? 
-        machine.vm.disk :disk, size: "#{node_nb["disk"]}", name: "disk-#{node_nb["name"]}"
+      if !node_nb["disks"].nil? && (node_nb["disks"] != [])
+        node_nb["disks"].each_with_index do |disk_size, index|
+          machine.vm.disk :disk, size: disk_size, name: "disk-#{node_nb["name"]}-#{disk_size}-#{index}"
+        end
       end
       machine.vm.provider "virtualbox" do |vb|
         vb.customize ["modifyvm", :id, "--name", "#{node_nb["name"]}"]
